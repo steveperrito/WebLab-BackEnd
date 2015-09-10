@@ -18,6 +18,9 @@ echo 'mixing these [1,2,3] && [\'a\',\'b\',\'c\'] :<br>';
 echo '<pre>';
 echo print_r(mix_em_up($mix_a, $mix_b));
 echo '</pre>';
+echo '<br>array of 100 Fibonaci numbers :<pre>';
+echo print_r(fib_100());
+echo '</pre>';
 
 //sum list of numbers with foreach
 function for_loop_sum($ary_of_nums) {
@@ -75,4 +78,21 @@ function mix_em_up($aryA, $aryB) {
   }
 
   return $return_ary;
+}
+
+//Return the first 100 Fibonacci Numbers.
+function fib_100() {
+  $return_array = [0,1];
+  $number_count_limit = 100;
+  $ary_count = 0;
+
+  while ($ary_count < $number_count_limit) {
+    $last_el = count($return_array) - 1;
+    $second_to_last = $last_el -1;
+    $new_fib_num = $return_array[$second_to_last] + $return_array[$last_el];
+    $return_array[] = $new_fib_num;
+    $ary_count = count($return_array);
+  }
+
+  return $return_array;
 }
