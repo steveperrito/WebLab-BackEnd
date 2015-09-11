@@ -12,9 +12,7 @@ $winning_board = [
     [null,null,'x']
 ];
 
-echo '<pre>';
 echo winner($winning_board)? 'winner':'no winner';
-echo '</pre>';
 
 function winner($ary){
   $we_got_winna = false;
