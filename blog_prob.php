@@ -10,6 +10,7 @@ $recursion_ary = [1,2,3,[4,5,6],7];
 $rest_of_ary = [1,2,3,4,5,6,7];
 $mix_a = [1,2,3];
 $mix_b = ['a','b','c'];
+$make_big_ary = [50, 2, 1, 9];
 
 echo 'recursion of [1,2,3,[4,5,6],7] :' . recursion_sum($recursion_ary).'<br>';
 echo 'for loop sum :' . for_loop_sum($rest_of_ary).'<br>';
@@ -20,6 +21,9 @@ echo print_r(mix_em_up($mix_a, $mix_b));
 echo '</pre>';
 echo '<br>array of 100 Fibonaci numbers :<pre>';
 echo print_r(fib_100());
+echo '</pre>';
+echo '<pre>';
+echo print_r(make_big_num($make_big_ary), true);
 echo '</pre>';
 
 //sum list of numbers with foreach
@@ -95,4 +99,17 @@ function fib_100() {
   }
 
   return $return_array;
+}
+
+//Write a function that given a list of non negative integers, arranges them such that they form the largest possible number. For example, given [50, 2, 1, 9], the largest formed number is 95021.
+function make_big_num($ary) {
+  $flat = [];
+  foreach ($ary as $num) {
+    $now_split = str_split((string)$num);
+    foreach ($now_split as $digit) {
+      $flat[] = $digit;
+    }
+  }
+  rsort($flat);
+  return (int)implode($flat);
 }
