@@ -128,40 +128,16 @@ $raven = [
     "            Shall be lifted-nevermore!"
 ];
 
-$raven = array_chunk($raven, 7);
-$raven = array_map("replace_break", $raven);
-/*$raven = array_reduce($raven, "concat_ary");*/
-/*$raven = implode('', $raven);*/
+$raven = implode('<br>', $raven);
 
-function replace_break($el) {
-  $last_indx = count($el) - 1;
-  if ($el[$last_indx] == "") {
-    array_pop($el);
-    array_unshift($el, '<p>');
-    $el[] = '</p>';
-    return $el;
-  } else {
-    array_unshift($el, '<p>');
-    $el[] = '</p>';
-    return $el;
-  }
-}
-
-function concat_ary ($prevEl, $currEl) {
-  return array_merge($prevEl, $currEl);
-}
 ?>
 
 <html>
 <head><title></title></head>
 <body>
-<h1 style="/*text-align:center;*/">Raven!</h1>
-<div id="wraper" style="/*text-align:center;*/">
-  <?php
-    echo '<pre>';
-    print_r($raven);
-    echo '</pre>';
-  ?>
+<h1 style="text-align:center;">Raven!</h1>
+<div id="wraper" style="text-align:center;">
+  <?= $raven ?>
 </div>
 </body>
 </html>
