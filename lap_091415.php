@@ -16,10 +16,6 @@ $cities = array_keys($all_weather);
 
 $err = [];
 
-/*$has_errors = isset($err['res']);*/
-
-/*echo $has_errors ? json_encode($err) : '<pre>'. print_r(get_weather($cities, $all_weather), true) . '</pre>';*/
-
 $all_weather = get_weather($cities, $all_weather);
 
 function get_weather($ary, $ary_store) {
@@ -40,28 +36,45 @@ function kelvin_to_fahrenheit($int) {
 
 ?>
 <html>
-<head><title>Weather</title></head>
+<head>
+  <title>Weather</title>
+  <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap/css/bootstrap-theme.min.css">
+</head>
 <body>
-<table>
-  <thead>
-  <tr>
-    <th>City</th>
-    <th>Icon</th>
-    <th>Description</th>
-    <th>Temp</th>
-  </tr>
-  </thead>
-  <tbody>
-  <?php foreach ($all_weather as $key => $val) { ?>
-  <tr>
-    <td><?php echo $key; ?></td>
-    <td><?php echo '<img src="http://openweathermap.org/img/w/' . $val['weather'][0]['icon'] . '.png">'; ?></td>
-    <td><?php echo $val['weather'][0]['description']; ?></td>
-    <td><?php echo kelvin_to_fahrenheit($val['main']['temp']) . '&deg;'; ?></td>
-  </tr>
-  <?php } ?>
-  </tbody>
-</table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Weather in Various Cities <small>(PHP)</small></h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>City</th>
+          <th>Icon</th>
+          <th>Description</th>
+          <th>Temp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($all_weather as $key => $val) { ?>
+          <tr>
+            <td><?php echo $key; ?></td>
+            <td><?php echo '<img src="http://openweathermap.org/img/w/' . $val['weather'][0]['icon'] . '.png">'; ?></td>
+            <td><?php echo $val['weather'][0]['description']; ?></td>
+            <td><?php echo kelvin_to_fahrenheit($val['main']['temp']) . '&deg;'; ?></td>
+          </tr>
+        <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
