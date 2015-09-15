@@ -34,6 +34,10 @@ function kelvin_to_fahrenheit($int) {
   return (($int - 273.15)* 1.8) + 32;
 }
 
+function prittify_text($str) {
+  return ucfirst($str) . '.';
+}
+
 ?>
 <html>
 <head>
@@ -65,8 +69,8 @@ function kelvin_to_fahrenheit($int) {
         <?php foreach ($all_weather as $key => $val) { ?>
           <tr>
             <td><?php echo $key; ?></td>
-            <td><?php echo '<img src="http://openweathermap.org/img/w/' . $val['weather'][0]['icon'] . '.png">'; ?></td>
-            <td><?php echo $val['weather'][0]['description']; ?></td>
+            <td class="text-center"><?php echo '<img src="http://openweathermap.org/img/w/' . $val['weather'][0]['icon'] . '.png">'; ?></td>
+            <td><?php echo prittify_text($val['weather'][0]['description']); ?></td>
             <td><?php echo kelvin_to_fahrenheit($val['main']['temp']) . '&deg;'; ?></td>
           </tr>
         <?php } ?>
