@@ -42,8 +42,8 @@ function prittify_text($str) {
 <html>
 <head>
   <title>Weather</title>
-  <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body>
 <div class="container-fluid">
