@@ -6,28 +6,28 @@
  * Time: 6:41 PM
  */
 
-$all_weather = [
-  'Denver'=>'',
-  'New York City'=>'',
-  'Los Angeles'=>''
+$cities = [
+  'Denver',
+  'New York City',
+  'Los Angeles'
 ];
-
-$cities = array_keys($all_weather);
 
 $err = [];
 
-$all_weather = get_weather($cities, $all_weather);
+$all_weather = get_weather($cities);
 
-function get_weather($ary, $ary_store) {
+function get_weather($ary) {
+  $all_weather = [];
+
   foreach ($ary as $val) {
     $req = curl_init('http://api.openweathermap.org/data/2.5/weather?q='. urlencode($val));
     curl_setopt($req, CURLOPT_HEADER, false);
     curl_setopt($req, CURLOPT_RETURNTRANSFER, true);
     $data = curl_exec($req);
-    $ary_store[$val] = json_decode($data, true);
+    $all_weather[$val] = json_decode($data, true);
   }
 
-  return $ary_store;
+  return $all_weather;
 }
 
 function kelvin_to_fahrenheit($int) {
