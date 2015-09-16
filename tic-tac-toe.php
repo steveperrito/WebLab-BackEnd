@@ -27,10 +27,13 @@ function debug($val){
   echo "<pre>". $output ."</pre>";
 }
 function getCell($row, $col){
+  global $winner;
   global $board;
+
+  $disable = $winner !== ''? 'disabled="disabled"' : '';
   $val = $board[$row][$col];
   if(is_null($val)){
-    return "<input type='submit' value='$row,$col' name='select' />";
+    return "<input type='submit' value='$row,$col' name='select' $disable />";
   } else {
     return "<h1>$val</h1><input type='hidden' name='board[$row][$col]' value='$val' />";
   }
