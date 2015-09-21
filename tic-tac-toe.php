@@ -54,7 +54,6 @@ function getNextPlayerIdx($idx){
 }
 function winner($ary){
   $we_got_winna = false;
-
   $winning_combos = [
       'diagonal_lr' => [$ary[0][0], $ary[1][1], $ary[2][2]],
       'diagonal_rl' => [$ary[0][2], $ary[1][1], $ary[2][0]],
@@ -73,11 +72,7 @@ function winner($ary){
       break;
     }
   }
-
-
-
   return $we_got_winna;
-
 }
 ?>
 
